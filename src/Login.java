@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/loginServlet")
 public class Login extends HttpServlet {
-
+    DBConnection dbc = new DBConnection();
     private static final long serialVersionUID = 1L;
 
     // This Method Is Called By The Servlet Container To Process A 'POST' Request.
@@ -23,23 +23,11 @@ public class Login extends HttpServlet {
         String param1 = req.getParameter("username");
         String param2 = req.getParameter("password");
 
-      //  PrintWriter out = resp.getWriter();
+        PrintWriter out = resp.getWriter();
       //  out.write("<html><body><div id='serlvetResponse' style='text-align: center;'>");
-
-        if(param1 == null || param2 == null) {
-            // The Request Parameters Were Not Present In The Query String. Do Something Or Exception Handling !!
-        } else if ("".equals(param1) || "".equals(param2)) {
-            // The Request Parameters Were Present In The Query String But Has No Value. Do Something Or Exception Handling !!
-            //out.write("<p style='color: red; font-size: larger;'>Você não tem acesso!</p>");
-        } else {
-            System.out.println("Username?= " + param1 + ", Password?= " + param2);
-
-            // Print The Response
-            PrintWriter out = resp.getWriter();
-            out.write("<html><body><div id='serlvetResponse' style='text-align: center;'>");
-
-            // Authentication Logic & Building The Html Response Code
-            if((param1.equalsIgnoreCase("admin")) && (param2.equals("admin"))) {
+           // if((param1.equalsIgnoreCase("admin")) && (param2.equals("admin"))) {
+        System.out.println(dbc.validarUsuario(param1));
+                if(dbc.validarUsuario(param1)){
                 out.write("<h2>Servlet Application Login Example</h2>");
                 out.write("<p style='color: green; font-size: large;'>Congratulations! <span style='text-transform: capitalize;'>" + param1 + "</span>, You are an authorised login!</p>");
             } else {
@@ -49,4 +37,3 @@ public class Login extends HttpServlet {
             out.close();
         }
     }
-}

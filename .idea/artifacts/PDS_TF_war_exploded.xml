@@ -7,6 +7,11 @@
         <element id="directory" name="classes">
           <element id="module-output" name="PDS_TF" />
         </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/src/lib/derby.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/lib/derbyclient.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/lib/derbytools.jar" />
+        </element>
       </element>
     </root>
   </artifact>

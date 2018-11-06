@@ -4,15 +4,17 @@ import java.util.prefs.Preferences;
 public class DBConnection {
 
     private static final String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
-    private static final String JDBC_URL = "jdbc:derby:C:/Users/gustavo.agnes/Desktop/PDS_TF/PDS_TF/src\\DBTF";
-
+    private static final String JDBC_URL = "jdbc:derby:C:/Users/gustavo.agnes/Desktop/PDS_TF/PDS_TF/src\\DBTF;create=true";
     Connection conn;
     private PreparedStatement stmt;
-    Preferences preferences =
-            Preferences.userNodeForPackage(Auth.class);
 
     public void createTableUsers() {
         try {
+            try{
+                Class.forName(DRIVER);
+            } catch(ClassNotFoundException e){
+                //handle exception
+            }
             this.conn = DriverManager.getConnection(JDBC_URL);
             stmt = conn.prepareStatement("CREATE TABLE Users (id BIGINT, username VARCHAR(20), password VARCHAR(20), email VARCHAR(254), last_login DATE , date_created DATE");
             //stmt.executeUpdate("CREATE TABLE Users (id BIGINT, username VARCHAR(20), password VARCHAR(20), email VARCHAR(254), last_login DATE , date_created DATE)");
@@ -35,7 +37,12 @@ public class DBConnection {
     public boolean validarUsuario(String user) {
         boolean existe = false;
         try {
-            this.conn = DriverManager.getConnection(JDBC_URL);
+            try{
+                Class.forName(DRIVER);
+            } catch(ClassNotFoundException e){
+                //handle exception
+            }
+            conn = DriverManager.getConnection(JDBC_URL);
             stmt = conn.prepareStatement("SELECT * FROM USERS");
             //ResultSet rs = stmt.executeQuery("SELECT * FROM USERS");
             ResultSet rs = stmt.executeQuery();
@@ -45,6 +52,7 @@ public class DBConnection {
                 }
             }
         } catch (SQLException sqlExcept) {
+            System.out.println("Falhou conexão");
             sqlExcept.printStackTrace();
         } finally {
             if (stmt != null) {
