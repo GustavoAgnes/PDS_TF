@@ -34,7 +34,7 @@ public class DBConnection {
         }
     }
 
-    public boolean validarUsuario(String user) {
+    public boolean validarUsuario(String user, String senha) {
         boolean existe = false;
         try {
             try{
@@ -47,7 +47,7 @@ public class DBConnection {
             //ResultSet rs = stmt.executeQuery("SELECT * FROM USERS");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                if(user.equalsIgnoreCase(rs.getString(2))){
+                if(user.equalsIgnoreCase(rs.getString(2)) && senha.equals(rs.getString(3))){
                     existe = true;
                 }
             }

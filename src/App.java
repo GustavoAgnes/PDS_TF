@@ -6,6 +6,5 @@ public class App {
         //a.lerArquivo();
         DBConnection c = new DBConnection();
         //c.createTableUsers();
-        System.out.println(c.validarUsuario("admin"));
     }
 }
