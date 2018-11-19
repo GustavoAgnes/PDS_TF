@@ -26,13 +26,17 @@ public class Login extends HttpServlet {
         PrintWriter out = resp.getWriter();
       //  out.write("<html><body><div id='serlvetResponse' style='text-align: center;'>");
            // if((param1.equalsIgnoreCase("admin")) && (param2.equals("admin"))) {
-        System.out.println(dbc.validarUsuario(param1,param2));
-                if(dbc.validarUsuario(param1,param2)){
+        int valido = dbc.validarUsuario(param1,param2);
+        if(valido== 1){
                 out.write("<h2>Servlet Application Login Example</h2>");
                 out.write("<p style='color: green; font-size: large;'>Congratulations! <span style='text-transform: capitalize;'>" + param1 + "</span>, You are an authorised login!</p>");
-            } else {
+            }
+            if(valido == 0){
                 out.write("<p style='color: red; font-size: larger;'>Você não tem acesso!</p>");
             }
+           if(valido == 2) {
+               out.write("<p style='color: red; font-size: larger;'>Seu usuário está bloqueado por excesso de tentativas!</p>");
+           }
             out.write("</div></body></html>");
             out.close();
         }
