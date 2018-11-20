@@ -16,7 +16,7 @@
                 <h2>Login Gerência</h2>
                 <p>Coloque seu usuário e senha</p>
             </div>
-            <form id="loginFormId" name="loginForm" method="post" action="loginServlet">
+            <form id="loginFormId" name="loginForm" method="post" action="<%=request.getContextPath()%>/loginServlet">
                 <div class="form-group">
                     <input type="text" class="form-control" id="username" placeholder="Usuario" name="username">
                 </div>
