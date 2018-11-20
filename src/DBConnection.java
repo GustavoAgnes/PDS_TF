@@ -50,7 +50,6 @@ public class DBConnection {
                 if(Integer.parseInt(rs.getString(7))>2){
                     valido = 2;
                 }
-                System.out.println(rs.getString(7));
                 if (user.equalsIgnoreCase(rs.getString(2)) && Integer.parseInt(rs.getString(7))<3) {
                     if (senha.equals(rs.getString(3))) {
                         stmt2 = conn.prepareStatement("UPDATE USERS SET CONT = 0 WHERE USERNAME = '" + rs.getString(2) + "'");

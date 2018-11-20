@@ -14,7 +14,7 @@
 <body>
     <div class="container">
         <h2>Gerência</h2>
-        <button class="btn btn-primary" type="button">Click Me!</button>
+        <button class="botaoVenda" type="button">Click Me!</button>
     </div>
 </body>
 </html>
