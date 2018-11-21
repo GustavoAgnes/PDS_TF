@@ -39,7 +39,6 @@ public class Login extends HttpServlet {
                 out.write("<button type=\"submit\" class=\"btn btn-primary\" value=\"Consultar VendasController\">Consultar VendasController</button>");
             //implementar sessão
             resp.sendRedirect("./vendas.jsp");
-            System.out.println(sessao.getAttribute("logado"));
         }
             if(valido == 0){
                 out.write("<p style='color: red; font-size: larger;'>Você não tem acesso!</p>");

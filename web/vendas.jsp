@@ -12,11 +12,11 @@
     <title>Title</title>
 </head>
 <body>
-<div class="container">
-    <h2 align="center">Gerência</h2>
+        <h2 id="gerencia">Gerência</h2>
     <form action="${pageContext.request.contextPath}/vendasServlet" method="post">
-        <button align="center" class="btn btn-primary" type="submit">Consultar Vendas</button>
+        <div class="col-md-4 center-block">
+        <button class="btn btn-primary" type="submit">Consultar Vendas</button>
+        </div>
     </form>
-</div>
 </body>
 </html>
