@@ -14,9 +14,9 @@
 <body>
         <h2 id="gerencia">Gerência</h2>
     <form action="${pageContext.request.contextPath}/vendasServlet" method="post">
-        <div class="col-md-4 center-block">
-        <button class="btn btn-primary" type="submit">Consultar Vendas</button>
-        </div>
-    </form>
+            <div class="col-md-4 center-block">
+                <button class="btn btn-primary" type="submit" name="consulta" value="consulta">Consultar Vendas</button>
+          </div>
+        </form>
 </body>
 </html>
